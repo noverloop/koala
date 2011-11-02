@@ -42,10 +42,10 @@ module Koala
       def initialize(options)
         options.symbolize_keys!
         @access_token = options[:access_token]
-        GRAPH_SERVER = options[:graph_server] || "graph.facebook.com"
-        REST_SERVER = options[:rest_server] || "api.facebook.com"
+        @@graph_server = options[:graph_server] 
+        @@rest_server = options[:rest_server] 
       end
-      attr_reader :access_token
+      attr_reader :access_token,:graph_server,:rest_server
 
       include GraphAPIMethods
       include RestAPIMethods
@@ -73,6 +73,14 @@ module Koala
 
         # if we want a component other than the body (e.g. redirect header for images), return that
         options[:http_component] ? result.send(options[:http_component]) : body
+      end
+
+      def self.graph_server
+        @@graph_server || "graph.facebook.com"
+      end
+ 
+      def self.rest_server
+        @@rest_server || "api.facebook.com"
       end
     end
 
