@@ -1,7 +1,5 @@
 module Koala
   module Facebook
-    REST_SERVER = "api.facebook.com"
-
     module RestAPIMethods      
       def set_app_properties(properties, args = {}, options = {})
         raise APIError.new({"type" => "KoalaMissingAccessToken", "message" => "setAppProperties requires an access token"}) unless @access_token

@@ -39,8 +39,11 @@ module Koala
     # APIs
     class API
       # initialize with an access token
-      def initialize(access_token = nil)
-        @access_token = access_token
+      def initialize(options)
+        options.symbolize_keys!
+        @access_token = options[:access_token]
+        GRAPH_SERVER = options[:graph_server] || "graph.facebook.com"
+        REST_SERVER = options[:rest_server] || "api.facebook.com"
       end
       attr_reader :access_token
 

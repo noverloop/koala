@@ -1,6 +1,5 @@
 module Koala
   module Facebook
-    GRAPH_SERVER = "graph.facebook.com"
 
     module GraphAPIMethods
       # A client for the Facebook Graph API.
