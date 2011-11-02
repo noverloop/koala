@@ -26,7 +26,7 @@ module Koala
     end
 
     def self.server(options = {})
-      server = "#{options[:rest_api] ? API.rest_server : API.graph_server}"
+      server = "#{options[:rest_api] ? Koala::Facebook::API.rest_server : Koala::Facebook::API.graph_server}"
       server.gsub!(/\.facebook/, "-video.facebook") if options[:video]
       server.gsub!(/\.facebook/, ".beta.facebook") if options[:beta]
       "#{options[:use_ssl] ? "https" : "http"}://#{server}"
